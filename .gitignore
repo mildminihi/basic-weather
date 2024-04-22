@@ -77,3 +77,4 @@ DerivedData
 *.xcuserstate
 
 Podfile.lock
+*.xcconfig
