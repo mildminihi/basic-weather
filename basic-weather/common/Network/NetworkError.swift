@@ -28,17 +28,4 @@ enum ResponseCode: Equatable {
             return true
         }
     }
-    
-    func isSessionKickedOrExpired() -> Bool {
-        switch self {
-        case .failure(let code):
-            return code == "RIB-E-LOG007" || code == "RIB-E-LOG013"
-        case .gatewayFailure(let code):
-            return code == "RIB-E-LOG007" || code == "RIB-E-LOG013"
-        case .networkFailure(let code):
-            return code == "RIB-E-LOG007" || code == "RIB-E-LOG013"
-        case .sessionFailure(let code):
-            return code == "RIB-E-LOG007" || code == "RIB-E-LOG013"
-        }
-    }
 }
