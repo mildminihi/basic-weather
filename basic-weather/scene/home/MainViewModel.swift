@@ -12,6 +12,7 @@ protocol MainViewModelInput {
 
 protocol MainViewModelOutput: AnyObject {
     var didError: (() -> Void)? { get set }
+    var onSuccessGetCurrentTemp: ((Nowcast) -> Void)? { get set }
 }
 
 protocol MainViewModelInterface: MainViewModelInput, MainViewModelOutput {
@@ -30,6 +31,7 @@ class MainViewModel: MainViewModelInterface {
             switch result {
             case .success(let result):
                 print(result)
+                self.onSuccessGetCurrentTemp?(result)
             case .failure(let error):
                 print(error)
             }
@@ -37,4 +39,5 @@ class MainViewModel: MainViewModelInterface {
     }
     
     var didError: (() -> Void)?
+    var onSuccessGetCurrentTemp: ((Nowcast) -> Void)?
 }

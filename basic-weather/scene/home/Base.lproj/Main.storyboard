@@ -135,6 +135,13 @@
                             <constraint firstItem="vBi-Ps-45z" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="nTN-uG-deN"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="conditionLabel" destination="4n2-YN-fnE" id="Oh2-tY-xDp"/>
+                        <outlet property="currentTempLabel" destination="UNP-SK-V0B" id="0Zg-TS-Z3L"/>
+                        <outlet property="highestTempLabel" destination="AJN-MA-d5q" id="0AM-Mq-rXI"/>
+                        <outlet property="locationLabel" destination="x7I-sj-m8A" id="KeP-qb-FVB"/>
+                        <outlet property="lowestTempLabel" destination="qcR-Ul-P9U" id="WVE-vo-MqT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

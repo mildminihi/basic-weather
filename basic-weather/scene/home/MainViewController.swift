@@ -10,6 +10,12 @@ import CoreLocation
 
 class MainViewController: UIViewController {
     
+    @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var currentTempLabel: UILabel!
+    @IBOutlet weak var conditionLabel: UILabel!
+    @IBOutlet weak var highestTempLabel: UILabel!
+    @IBOutlet weak var lowestTempLabel: UILabel!
+    
     var viewModel: MainViewModel?
     let locationManager = CLLocationManager()
 
@@ -18,6 +24,7 @@ class MainViewController: UIViewController {
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         setupViewModel()
+        bindViewModel()
     }
     
     func setupViewModel() {
@@ -26,6 +33,17 @@ class MainViewController: UIViewController {
 }
 
 extension MainViewController {
+    
+    func bindViewModel() {
+        viewModel?.output.onSuccessGetCurrentTemp = onSuccessGetCurrentTemp()
+    }
+    
+    func onSuccessGetCurrentTemp() -> ((Nowcast) -> Void) {
+        return { [weak self] nowcastData in
+            self?.currentTempLabel.text = "\(nowcastData.stateCode)°"
+            self?.locationLabel.text = nowcastData.cityName
+        }
+    }
 }
 
 extension MainViewController: CLLocationManagerDelegate {
