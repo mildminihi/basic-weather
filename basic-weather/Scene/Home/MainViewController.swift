@@ -8,7 +8,7 @@
 import UIKit
 import CoreLocation
 
-class MainViewController: UIViewController {
+class MainViewController: BaseViewController {
     
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var currentTempLabel: UILabel!
@@ -25,6 +25,7 @@ class MainViewController: UIViewController {
         locationManager.requestWhenInUseAuthorization()
         setupViewModel()
         bindViewModel()
+        self.view.showLoading()
     }
     
     func setupViewModel() {
@@ -38,10 +39,13 @@ extension MainViewController {
         viewModel?.output.onSuccessGetCurrentTemp = onSuccessGetCurrentTemp()
     }
     
-    func onSuccessGetCurrentTemp() -> ((Nowcast) -> Void) {
+    func onSuccessGetCurrentTemp() -> ((MainModel.NowcastViewModel) -> Void) {
+        self.view.hideLoading()
         return { [weak self] nowcastData in
-            self?.currentTempLabel.text = "\(nowcastData.stateCode)°"
-            self?.locationLabel.text = nowcastData.cityName
+            self?.currentTempLabel.text = "\(nowcastData.currentTemp)°"
+//            self?.highestTempLabel.text = "H:\(nowcastData.highestTemp)°"
+//            self?.lowestTempLabel.text = "L:\(nowcastData.lowestTemp)°"
+            self?.locationLabel.text = nowcastData.location
         }
     }
 }

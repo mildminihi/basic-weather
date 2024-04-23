@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		187FE8312BD7471F00551B25 /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187FE8302BD7471F00551B25 /* MainModel.swift */; };
+		187FE8332BD74E1E00551B25 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187FE8322BD74E1E00551B25 /* BaseViewController.swift */; };
 		18C776FE2BD617360039F451 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C776FD2BD617360039F451 /* AppDelegate.swift */; };
 		18C777002BD617360039F451 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C776FF2BD617360039F451 /* SceneDelegate.swift */; };
 		18C777022BD617360039F451 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C777012BD617360039F451 /* MainViewController.swift */; };
@@ -26,6 +28,8 @@
 
 /* Begin PBXFileReference section */
 		0EFA4DF4E4578A411E6F3BE8 /* Pods_basic_weather.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_basic_weather.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		187FE8302BD7471F00551B25 /* MainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
+		187FE8322BD74E1E00551B25 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		18C776FA2BD617360039F451 /* basic-weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "basic-weather.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		18C776FD2BD617360039F451 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18C776FF2BD617360039F451 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -66,6 +70,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		187FE82F2BD746A600551B25 /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				18C7771E2BD636320039F451 /* Nowcast.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
 		18C776F12BD617360039F451 = {
 			isa = PBXGroup;
 			children = (
@@ -87,10 +99,10 @@
 		18C776FC2BD617360039F451 /* basic-weather */ = {
 			isa = PBXGroup;
 			children = (
-				18C777202BD647D30039F451 /* common */,
+				18C777202BD647D30039F451 /* Common */,
 				18C7771D2BD636180039F451 /* model */,
-				18C777182BD626650039F451 /* constant */,
-				18C777112BD61DEB0039F451 /* scene */,
+				18C777182BD626650039F451 /* Constant */,
+				18C777112BD61DEB0039F451 /* Scene */,
 				18C776FD2BD617360039F451 /* AppDelegate.swift */,
 				18C776FF2BD617360039F451 /* SceneDelegate.swift */,
 				18C777062BD6173D0039F451 /* Assets.xcassets */,
@@ -100,23 +112,24 @@
 			path = "basic-weather";
 			sourceTree = "<group>";
 		};
-		18C777112BD61DEB0039F451 /* scene */ = {
+		18C777112BD61DEB0039F451 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
-				18C777122BD61E0B0039F451 /* home */,
+				18C777122BD61E0B0039F451 /* Home */,
 			);
-			path = scene;
+			path = Scene;
 			sourceTree = "<group>";
 		};
-		18C777122BD61E0B0039F451 /* home */ = {
+		18C777122BD61E0B0039F451 /* Home */ = {
 			isa = PBXGroup;
 			children = (
 				18C777012BD617360039F451 /* MainViewController.swift */,
 				18C777032BD617360039F451 /* Main.storyboard */,
 				18C7771B2BD628850039F451 /* MainViewModel.swift */,
 				18C777132BD61E220039F451 /* HourCell */,
+				187FE8302BD7471F00551B25 /* MainModel.swift */,
 			);
-			path = home;
+			path = Home;
 			sourceTree = "<group>";
 		};
 		18C777132BD61E220039F451 /* HourCell */ = {
@@ -128,28 +141,29 @@
 			path = HourCell;
 			sourceTree = "<group>";
 		};
-		18C777182BD626650039F451 /* constant */ = {
+		18C777182BD626650039F451 /* Constant */ = {
 			isa = PBXGroup;
 			children = (
 				18C777192BD6267C0039F451 /* Constant.swift */,
 			);
-			path = constant;
+			path = Constant;
 			sourceTree = "<group>";
 		};
 		18C7771D2BD636180039F451 /* model */ = {
 			isa = PBXGroup;
 			children = (
-				18C7771E2BD636320039F451 /* Nowcast.swift */,
+				187FE82F2BD746A600551B25 /* Response */,
 			);
 			path = model;
 			sourceTree = "<group>";
 		};
-		18C777202BD647D30039F451 /* common */ = {
+		18C777202BD647D30039F451 /* Common */ = {
 			isa = PBXGroup;
 			children = (
 				18C777232BD64C800039F451 /* Network */,
+				187FE8322BD74E1E00551B25 /* BaseViewController.swift */,
 			);
-			path = common;
+			path = Common;
 			sourceTree = "<group>";
 		};
 		18C777232BD64C800039F451 /* Network */ = {
@@ -292,7 +306,9 @@
 				18C777002BD617360039F451 /* SceneDelegate.swift in Sources */,
 				18C777252BD64C950039F451 /* EndPoint.swift in Sources */,
 				18C777222BD647DE0039F451 /* Rest.swift in Sources */,
+				187FE8332BD74E1E00551B25 /* BaseViewController.swift in Sources */,
 				18C7771F2BD636320039F451 /* Nowcast.swift in Sources */,
+				187FE8312BD7471F00551B25 /* MainModel.swift in Sources */,
 				18C777172BD625610039F451 /* HourCell.swift in Sources */,
 				18C7771A2BD6267C0039F451 /* Constant.swift in Sources */,
 				18C7771C2BD628850039F451 /* MainViewModel.swift in Sources */,
@@ -453,11 +469,15 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "basic-weather/Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.weather";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "you allow this app to always know your location?";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "you allow this app to always know your location?";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "you allow this app to always know your location?";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -483,11 +503,15 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "basic-weather/Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.weather";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "you allow this app to always know your location?";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "you allow this app to always know your location?";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "you allow this app to always know your location?";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

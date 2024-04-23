@@ -12,7 +12,7 @@ protocol MainViewModelInput {
 
 protocol MainViewModelOutput: AnyObject {
     var didError: (() -> Void)? { get set }
-    var onSuccessGetCurrentTemp: ((Nowcast) -> Void)? { get set }
+    var onSuccessGetCurrentTemp: ((MainModel.NowcastViewModel) -> Void)? { get set }
 }
 
 protocol MainViewModelInterface: MainViewModelInput, MainViewModelOutput {
@@ -26,12 +26,12 @@ class MainViewModel: MainViewModelInterface {
     
     func getCurrentTemp(lad: Double, long: Double) {
         print(lad, long)
-        let endPoint = "https://weatherbit-v1-mashape.p.rapidapi.com/forecast/minutely?lat=\(lad)&lon=\(long)"
+        let endPoint = "https://weatherapi-com.p.rapidapi.com/current.json?q=\(lad)%2C\(long)"
         Rest.shared.request(endPoint) { (result: Result<Nowcast, ResponseError>) in
             switch result {
             case .success(let result):
                 print(result)
-                self.onSuccessGetCurrentTemp?(result)
+                self.onGetCurrentTempSuccess(model: result)
             case .failure(let error):
                 print(error)
             }
@@ -39,5 +39,16 @@ class MainViewModel: MainViewModelInterface {
     }
     
     var didError: (() -> Void)?
-    var onSuccessGetCurrentTemp: ((Nowcast) -> Void)?
+    var onSuccessGetCurrentTemp: ((MainModel.NowcastViewModel) -> Void)?
+    
+    private func onGetCurrentTempSuccess(model: Nowcast) {
+//        let tempList: [Double] = model.data.map {$0.temp}
+        let viewModel = MainModel.NowcastViewModel(
+            location: model.location.name,
+            currentTemp: String(model.current.tempC),
+            highestTemp: String(0.0),
+            lowestTemp: String(0.0)
+        )
+        self.onSuccessGetCurrentTemp?(viewModel)
+    }
 }

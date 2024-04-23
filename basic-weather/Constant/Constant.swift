@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum Condition {
+public enum ConditionType {
     case snow
     case sunny
     case rainny
