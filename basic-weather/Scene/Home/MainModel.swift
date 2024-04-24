@@ -13,5 +13,8 @@ enum MainModel {
         let currentTemp: String
         let highestTemp: String
         let lowestTemp: String
+        let condition: String
+        let feelLike: String
+        let forcastCurrent: [Hour]
     }
 }

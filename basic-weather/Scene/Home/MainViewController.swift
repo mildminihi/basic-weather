@@ -15,6 +15,7 @@ class MainViewController: BaseViewController {
     @IBOutlet weak var conditionLabel: UILabel!
     @IBOutlet weak var highestTempLabel: UILabel!
     @IBOutlet weak var lowestTempLabel: UILabel!
+    @IBOutlet weak var feelLikeLabel: UILabel!
     
     var viewModel: MainViewModel?
     let locationManager = CLLocationManager()
@@ -43,9 +44,11 @@ extension MainViewController {
         self.view.hideLoading()
         return { [weak self] nowcastData in
             self?.currentTempLabel.text = "\(nowcastData.currentTemp)°"
-//            self?.highestTempLabel.text = "H:\(nowcastData.highestTemp)°"
-//            self?.lowestTempLabel.text = "L:\(nowcastData.lowestTemp)°"
+            self?.highestTempLabel.text = "H:\(nowcastData.highestTemp)°"
+            self?.lowestTempLabel.text = "L:\(nowcastData.lowestTemp)°"
+            self?.conditionLabel.text = nowcastData.condition
             self?.locationLabel.text = nowcastData.location
+            self?.feelLikeLabel.text = "Feel Like:\(nowcastData.feelLike)°"
         }
     }
 }

@@ -18,7 +18,6 @@ final class Rest {
             "X-RapidAPI-Key": ProcessInfo.processInfo.environment["X-RapidAPI-Key"] ?? "",
             "X-RapidAPI-Host": ProcessInfo.processInfo.environment["X-RapidAPI-Host"] ?? ""
         ]
-        
         AF.request(url, method: method, parameters: parameters, headers: headers)
             .validate(statusCode: 200..<300)
             .responseDecodable(of: T.self) { response in

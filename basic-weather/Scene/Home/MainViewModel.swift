@@ -26,8 +26,9 @@ class MainViewModel: MainViewModelInterface {
     
     func getCurrentTemp(lad: Double, long: Double) {
         print(lad, long)
-        let endPoint = "https://weatherapi-com.p.rapidapi.com/current.json?q=\(lad)%2C\(long)"
-        Rest.shared.request(endPoint) { (result: Result<Nowcast, ResponseError>) in
+        let endPoint = "https://weatherapi-com.p.rapidapi.com/forecast.json"
+        let parameter: [String: Any] = ["q": "\(lad),\(long)", "day": "10"]
+        Rest.shared.request(endPoint, parameters: parameter) { (result: Result<Nowcast, ResponseError>) in
             switch result {
             case .success(let result):
                 print(result)
@@ -42,12 +43,15 @@ class MainViewModel: MainViewModelInterface {
     var onSuccessGetCurrentTemp: ((MainModel.NowcastViewModel) -> Void)?
     
     private func onGetCurrentTempSuccess(model: Nowcast) {
-//        let tempList: [Double] = model.data.map {$0.temp}
+        let forecastCurrent = model.forecast.forecastday.first?.hour ?? []
         let viewModel = MainModel.NowcastViewModel(
             location: model.location.name,
             currentTemp: String(model.current.tempC),
-            highestTemp: String(0.0),
-            lowestTemp: String(0.0)
+            highestTemp: String(forecastCurrent.map{$0.tempC}.max() ?? 0.0),
+            lowestTemp: String(forecastCurrent.map{$0.tempC}.min() ?? 0.0),
+            condition: model.current.condition.text.rawValue,
+            feelLike: String(model.current.feelslikeC),
+            forcastCurrent: forecastCurrent
         )
         self.onSuccessGetCurrentTemp?(viewModel)
     }
